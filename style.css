@@ -1,0 +1,50 @@
+body {
+    margin: 0px;
+    background-color: #CAF0F8;
+}
+.main {
+    width: 70vw;
+    height: fit-content;
+    background-color: #CAF0F8;
+    margin: 2vh auto 0 auto;
+    font-size: 1.5rem;
+}
+.cityContainer {
+    position: relative;
+    background-color: #00B4D8;
+    border: 1px solid #0077B6;
+    border-radius: 10px;
+}
+.cityListContainer {
+    width: 50%;
+    max-height: 30vh;
+    position: absolute;
+    background-color: #00B4D8;
+    border: 1px solid #0077B6;
+    border-radius: 10px;
+    margin: -0.5vh 1vh;
+    display: none;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.cityNameInput {
+    font-size: 1.5rem;
+    width: 50%;
+    margin: 1vh ;
+    padding: 0.5rem;
+    background-color: #CAF0F8;
+    border: 1px solid #0077B6;
+    border-radius: 5px;
+    outline: none;
+}
+.cityList {
+  padding: 0.5rem;
+  
+} 
+
+
+/* #03045E
+#0077B6
+#00B4D8
+#90E0EF
+#CAF0F8 */
