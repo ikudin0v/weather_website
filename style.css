@@ -14,24 +14,32 @@ body {
 
 
 .main {
-    width: 70vw;
-    height: fit-content;
+    width: 100vw;
+    /* height: fit-content; */
     /* background-color: #CAF0F8; */
     background-color: transparent;
     margin: 2vh auto 0 auto;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center;
+    align-content: center;
+    justify-content: center;
+    justify-items: center; */
+    
+    
 }
 .logo {
     display: flex;
     text-align: center;
     margin: 0.5rem;
     align-items: center;
-    width: calc(30% - 1rem);
+    width: fit-content;
     justify-content: center;
     font-size: 2.5rem;
 }
 .formContainer {
-    width: 70%;
+    width: -webkit-fill-available;
     display: block;
 }
 .cityContainer {
@@ -40,7 +48,7 @@ body {
     background-color: #00000067;
     /* border: 1px solid #0077B6; */
     border-radius: 5px;
-    flex-direction: row;
+    flex-direction: row;justify-content: space-between;
     width: 50vw;
     margin: auto;
 }
@@ -75,7 +83,7 @@ body {
     display: block;
     font-size: 1.5rem;
     width: calc(100% - 2vh - 0.6rem);
-    margin: 1vh ;
+    margin: 1vh 1vh 1vh 0 ;
     padding: 0.3rem;
     background-color: #ffffff61;
     /* border: 1px solid #0077B6; */
@@ -113,11 +121,6 @@ body {
     /* min-width: max-content; */
 }
 
-
-
-
-
-
 /*...........................................CURRENT...........................................*/
 
 .currentWeather > div {
@@ -127,30 +130,32 @@ body {
     justify-content: center;
     text-align: center;
 }
-/* .currentWeather > div > img{
-    height: 4rem;
-} */
-
 
 .currentWeather {
-    height: 30vh;
-    width: 50vw;
-    margin: 5vh auto 0 auto;
+    height: fit-content;
+    max-height: 75vh;
+    width: 60%;
+    /* width: 50vw; */
+    margin: 2vh auto 0 auto;
+    padding: 10px;
+    background-color: #ffffff1b;
+    border-radius: 10px;
+
     display: grid;
     grid-template-columns: repeat(2, 3fr) 3fr 1fr 2fr;
     grid-template-rows: 1fr 2fr repeat(6, 1fr);
     grid-auto-columns: 1fr;
-    gap: 0.5rem 0.5rem;
+    /* gap: 0.5rem 0.5rem; */
     grid-auto-flow: row;
     grid-template-areas:
-        "currentCityName currentCityName currentCityName currentCityName currentCityName"
-        "currentTemperature currentTemperature currentClouds currentClouds currentClouds"
-        "currentTemperature currentTemperature currentCloudsDescription currentCloudsDescription currentCloudsDescription"
-        "currentMinMaxTemperature currentMinMaxTemperature currentFeel currentFeel currentFeel"
-        "sunriseData sunsetData currentWindSpeed currentWindImg currentWindData"
-        "sunriseData sunsetData currentWindDirection currentWindDirectionImg currentWindDirectionData"
-        "sunriseImg sunsetImg currentUvIndex UvIndexImg UvIndexData"
-        "sunriseImg sunsetImg currentHumidity humidityImg humidityData";
+        "currentCityName    currentCityName     currentCityName             currentCityName             currentCityName"
+        "currentTemperature currentTemperature  currentClouds               currentClouds               currentClouds"
+        "currentFeel        currentFeel         currentCloudsDescription    currentCloudsDescription    currentCloudsDescription"
+        "sunriseData        sunsetData          currentWindSpeed            currentWindImg              currentWindData"
+        "sunriseData        sunsetData          currentWindDirection        currentWindDirectionImg     currentWindDirectionData"
+        "sunriseImg         sunsetImg           currentUvIndex              UvIndexImg                  UvIndexData"
+        "sunriseImg         sunsetImg           currentHumidity             humidityImg                 humidityData"
+        "sunriseImg         sunsetImg           currentPreasure             preasureImg                 preasureData";
 }
 
 .currentCityName { grid-area: currentCityName; }
@@ -160,8 +165,6 @@ body {
     font-size: 13rem;
 }
 
-.currentMinMaxTemperature { grid-area: currentMinMaxTemperature; }
-
 .currentClouds {
     grid-area: currentClouds;
     height: 10rem;
@@ -169,6 +172,7 @@ body {
 
 .currentClouds > img {
     height: 15rem;
+    align-self: baseline;
 }
 
 .currentCloudsDescription { grid-area: currentCloudsDescription; }
@@ -177,18 +181,22 @@ body {
 
 .sunriseData {
     grid-area: sunriseData;
+    align-self: end;
 }
 
 .sunsetData {
     grid-area: sunsetData;
+    align-self: end;
 }
 
 .sunriseImg {
     grid-area: sunriseImg;
+    align-self: baseline;
 }
 
 .sunsetImg {
     grid-area: sunsetImg;
+    align-self: baseline;
 }
 
 .sunriseImg > img, .sunsetImg > img {
@@ -202,6 +210,8 @@ body {
 .currentUvIndex { grid-area: currentUvIndex; }
 
 .currentHumidity { grid-area: currentHumidity; }
+
+.currentPreasure { grid-area: currentPreasure;}
 
 .currentWindImg {
     grid-area: currentWindImg;
@@ -222,8 +232,12 @@ body {
     grid-area: humidityImg;
     height: 4rem;
 }
+.preasureImg{
+    grid-area: preasureImg;
+    height: 4rem;
+}
 
-.humidityImg > img, .UvIndexImg > img, .currentWindDirectionImg > img, .currentWindImg > img {
+.humidityImg > img, .UvIndexImg > img, .currentWindDirectionImg > img, .currentWindImg > img, .preasureImg > img {
     height: 4rem;
 }
 
@@ -235,11 +249,101 @@ body {
 
 .humidityData { grid-area: humidityData; }
 
+.preasureData { grid-area: preasureData; }
+
+/*...........................................DAILY...........................................*/
+
+.dailyWeather {
+    height: 55vh;
+    width: 60%;
+    margin: 15vh auto 15vh auto;
+    padding: 10px;
+    /* overflow: scroll; */
+    /* overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap; */
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    background-color: #ffffff1b;
+    border-radius: 10px;
+}
+
+.dailyCard {
+    /* display: inline-block; */
+    width: 250px;
+    height: 100%;
+    /* border: 1px solid red; */
+    flex: 0 0 auto;
+
+
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "dailyDate                dailyDate               dailyDate                   dailyDate                   dailyDate                   dailyDate"
+      "dailyImg                 dailyImg                dailyImg                    dailyImg                    dailyImg                    dailyImg"
+      "dayTemp                  dayTemp                 dayTemp                     nightTemp                   nightTemp                   nightTemp"
+      "dailyWindImg             dailyWindImg            dailyHumidityImg            dailyHumidityImg            dailyPressureImg            dailyPressureImg"
+      "dailyWindDesctiption     dailyWindDesctiption    dailyHumidityDescription    dailyHumidityDescription    dailyPressureDecription     dailyPressureDecription";
+}
 
 
 
 
 
 
-
+.dailyCard > div {
+    display: flex;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
   
+.dailyWindImg { grid-area: dailyWindImg; }
+
+.dailyHumidityImg { grid-area: dailyHumidityImg; }
+
+.dailyPressureImg { grid-area: dailyPressureImg; }
+
+.dailyPressureImg > img, .dailyHumidityImg > img, .dailyWindImg > img {
+    width: 100%;
+}
+
+.dailyPressureDecription { grid-area: dailyPressureDecription; }
+
+.dailyHumidityDescription { grid-area: dailyHumidityDescription; }
+
+.dailyWindDesctiption { grid-area: dailyWindDesctiption; }
+
+.dailyPressureDecription, .dailyHumidityDescription, .dailyWindDesctiption {
+    height: 2rem;
+}
+
+.nightTemp { grid-area: nightTemp; }
+
+.dayTemp { grid-area: dayTemp; }
+
+.dayTemp, .nightTemp {
+    font-size: 3rem;
+    height: 3rem;
+}
+
+.dailyImg {
+    grid-area: dailyImg;
+    height: 200px;
+}
+
+.dailyImg > img {
+    width: 100%;
+}
+
+.dailyDate {
+    grid-area: dailyDate;
+    font-size: 3rem;
+}

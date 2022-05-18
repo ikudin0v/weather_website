@@ -44,27 +44,31 @@ function getForecast(id) {
             name = elem.name
         }
     })
-    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=alerts,daily,hourly,minutely&units=metric&lang=ru&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=alerts,hourly,minutely&units=metric&lang=ru&appid=${apiKey}`)
     .then(response => response.json())
     .then(json => showCurrentWeather(json, name))
 }
 
 function showCurrentWeather(json, name) {
+    console.log(json)
+
+    document.querySelector('.cityNameInput').value = ''
     while (document.querySelector('.currentWeather').firstChild){
         document.querySelector('.currentWeather').removeChild(document.querySelector('.currentWeather').firstChild)
     }
-    let time = new Date(json.current.sunrise)
-    let sunriseTime = `${time.getHours()}:${time.getMinutes()}`
-    time = new Date(json.current.sunset)
-    let sunsetTime = `${time.getHours()}:${time.getMinutes()}`
-    document.querySelector('.currentWeather').insertAdjacentHTML('afterbegin', `<div class="currentCityName">${name}</div>
+    let timeZone = new Date()
+    console.log(timeZone.getTimezoneOffset() * 60)
+    let sunriseTime = new Date((json.current.sunrise + json.timezone_offset) * 1000)
+    let sunsetTime = new Date((json.current.sunset + json.timezone_offset) * 1000)
+    let currentTime = new Date((json.current.dt + timeZone.getTimezoneOffset() * 60 + json.timezone_offset) * 1000)
+    document.querySelector('.currentWeather').insertAdjacentHTML('afterbegin', `<div class="currentCityName">${name}, ${currentTime.getHours()}:${currentTime.getMinutes()}</div>
                                                                                 <div class="currentTemperature">${Math.round(json.current.temp)}&#xb0;</div>
-                                                                                <div class="currentMinMaxTemperature">Пока не работает</div>
+                                                                                
                                                                                 <div class="currentClouds"><img src="./img/weather_icons/${json.current.weather[0].icon}.svg"></div>
                                                                                 <div class="currentCloudsDescription">${json.current.weather[0].description}</div>
                                                                                 <div class="currentFeel">Ощущается как ${Math.round(json.current.feels_like)}&#xb0;</div>
-                                                                                <div class="sunriseData">Восход<br>${sunriseTime}</div>
-                                                                                <div class="sunsetData">Закат<br>${sunsetTime}</div>
+                                                                                <div class="sunriseData">Восход<br>${sunriseTime.getUTCHours()}:${sunriseTime.getMinutes()}</div>
+                                                                                <div class="sunsetData">Закат<br>${sunsetTime.getUTCHours()}:${sunsetTime.getMinutes()}</div>
                                                                                 <div class="sunriseImg"><img src="./img/weather_icons/sunrise.svg"></div>
                                                                                 <div class="sunsetImg"><img src="./img/weather_icons/sunset.svg"></div>
                                                                                 <div class="humidityData">${json.current.humidity}%</div>
@@ -78,5 +82,29 @@ function showCurrentWeather(json, name) {
                                                                                 <div class="currentWindDirection">Направление ветра</div>
                                                                                 <div class="currentUvIndex">УФ-индекс</div>
                                                                                 <div class="currentWindSpeed">Скорость ветра</div>
-                                                                                <div class="currentHumidity">Влажность</div>`)
+                                                                                <div class="currentHumidity">Влажность</div>
+                                                                                <div class="currentPreasure">Давление</div>
+                                                                                <div class="preasureImg"><img src="./img/weather_icons/preasure.svg"></div>
+                                                                                <div class="currentPreasureData">${json.current.pressure} hPa</div>`)
+          
+    showDailyWeather(json)                                                                            
+
+}
+
+
+function showDailyWeather(json) {
+    for (i=0; i < 8; i++){
+        document.querySelector('.dailyWeather').insertAdjacentHTML('afterbegin', `<div class="dailyCard">
+                                                                                        <div class="dailyDate">Среда<br>20.02</div>
+                                                                                        <div class="dailyImg"><img src="./img/weather_icons/01d.svg"></div>
+                                                                                        <div class="dayTemp">20&#xb0;</div>
+                                                                                        <div class="nightTemp">15&#xb0;</div>
+                                                                                        <div class="dailyWindImg"><img src="./img/weather_icons/wind.svg"></div>
+                                                                                        <div class="dailyHumidityImg"><img src="./img/weather_icons/humidity.svg"></div>
+                                                                                        <div class="dailyPressureImg"><img src="./img/weather_icons/preasure.svg"></div>
+                                                                                        <div class="dailyWindDesctiption">20<br>m/с</div>
+                                                                                        <div class="dailyHumidityDescription">50<br>%</div>
+                                                                                        <div class="dailyPressureDecription">1050<br>hPA</div>
+                                                                                    </div>`)
+    }
 }
