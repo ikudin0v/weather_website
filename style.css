@@ -1,50 +1,245 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body {
+    min-height: 100vh;
     margin: 0px;
-    background-color: #CAF0F8;
+    /* background-color: #CAF0F8; */
+    background: rgb(252,127,0);
+    background: linear-gradient(148deg, rgba(252,127,0,1) 0%, rgba(0,119,182,1) 50%, rgba(202,240,248,1) 100%);
+
+    background-repeat: no-repeat;
+    color: white;
+    font-family: 'Roboto', sans-serif;
 }
+
+
+
 .main {
     width: 70vw;
     height: fit-content;
-    background-color: #CAF0F8;
+    /* background-color: #CAF0F8; */
+    background-color: transparent;
     margin: 2vh auto 0 auto;
     font-size: 1.5rem;
 }
+.logo {
+    display: flex;
+    text-align: center;
+    margin: 0.5rem;
+    align-items: center;
+    width: calc(30% - 1rem);
+    justify-content: center;
+    font-size: 2.5rem;
+}
+.formContainer {
+    width: 70%;
+    display: block;
+}
 .cityContainer {
+    display: flex;
     position: relative;
-    background-color: #00B4D8;
-    border: 1px solid #0077B6;
-    border-radius: 10px;
+    background-color: #00000067;
+    /* border: 1px solid #0077B6; */
+    border-radius: 5px;
+    flex-direction: row;
+    width: 50vw;
+    margin: auto;
 }
 .cityListContainer {
-    width: 50%;
+    width: 40%;
     max-height: 30vh;
     position: absolute;
-    background-color: #00B4D8;
-    border: 1px solid #0077B6;
-    border-radius: 10px;
-    margin: -0.5vh 1vh;
+    background-color: #ffffff61;
+    /* border: 1px solid #0077B6; */
+    border-radius: 5px;
+    margin: -0.5vh;
     display: none;
     overflow: scroll;
     overflow-x: hidden;
 }
+.cityListContainer::-webkit-scrollbar {
+    width: 10px;
+    background-color: #ffffff61;
+    border-radius: 5px;
+    
+}
+.cityListContainer::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #0000006c;
+}
+.cityListContainer::-webkit-scrollbar-track {
+    border-radius: 5px;
+    /* border: 1px solid #0077B6; */
+    background-color: #90909031;
+}
 .cityNameInput {
+    display: block;
     font-size: 1.5rem;
-    width: 50%;
+    width: calc(100% - 2vh - 0.6rem);
     margin: 1vh ;
-    padding: 0.5rem;
-    background-color: #CAF0F8;
-    border: 1px solid #0077B6;
+    padding: 0.3rem;
+    background-color: #ffffff61;
+    /* border: 1px solid #0077B6; */
     border-radius: 5px;
     outline: none;
+    color: white;
 }
 .cityList {
   padding: 0.5rem;
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 5px;
 } 
+.cityList:hover {
+    background-color: #5a5a5a31;
+}
+
+.alkdfmv {
+    border: #03045E;
+    border: #0077B6;
+    border: #00B4D8;
+    border: #90E0EF;
+    border: #CAF0F8;
+}
+.country {
+    width: 2.5rem;
+    border: 2px;
+    background-color: #0000006c;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* min-width: max-content; */
+}
 
 
-/* #03045E
-#0077B6
-#00B4D8
-#90E0EF
-#CAF0F8 */
+
+
+
+
+/*...........................................CURRENT...........................................*/
+
+.currentWeather > div {
+    display: flex;
+    /* border: 1px solid red; */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+/* .currentWeather > div > img{
+    height: 4rem;
+} */
+
+
+.currentWeather {
+    height: 30vh;
+    width: 50vw;
+    margin: 5vh auto 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 3fr) 3fr 1fr 2fr;
+    grid-template-rows: 1fr 2fr repeat(6, 1fr);
+    grid-auto-columns: 1fr;
+    gap: 0.5rem 0.5rem;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "currentCityName currentCityName currentCityName currentCityName currentCityName"
+        "currentTemperature currentTemperature currentClouds currentClouds currentClouds"
+        "currentTemperature currentTemperature currentCloudsDescription currentCloudsDescription currentCloudsDescription"
+        "currentMinMaxTemperature currentMinMaxTemperature currentFeel currentFeel currentFeel"
+        "sunriseData sunsetData currentWindSpeed currentWindImg currentWindData"
+        "sunriseData sunsetData currentWindDirection currentWindDirectionImg currentWindDirectionData"
+        "sunriseImg sunsetImg currentUvIndex UvIndexImg UvIndexData"
+        "sunriseImg sunsetImg currentHumidity humidityImg humidityData";
+}
+
+.currentCityName { grid-area: currentCityName; }
+
+.currentTemperature {
+    grid-area: currentTemperature;
+    font-size: 13rem;
+}
+
+.currentMinMaxTemperature { grid-area: currentMinMaxTemperature; }
+
+.currentClouds {
+    grid-area: currentClouds;
+    height: 10rem;
+}
+
+.currentClouds > img {
+    height: 15rem;
+}
+
+.currentCloudsDescription { grid-area: currentCloudsDescription; }
+
+.currentFeel { grid-area: currentFeel; }
+
+.sunriseData {
+    grid-area: sunriseData;
+}
+
+.sunsetData {
+    grid-area: sunsetData;
+}
+
+.sunriseImg {
+    grid-area: sunriseImg;
+}
+
+.sunsetImg {
+    grid-area: sunsetImg;
+}
+
+.sunriseImg > img, .sunsetImg > img {
+    height: 10rem; 
+}
+
+.currentWindSpeed { grid-area: currentWindSpeed; }
+
+.currentWindDirection { grid-area: currentWindDirection; }
+
+.currentUvIndex { grid-area: currentUvIndex; }
+
+.currentHumidity { grid-area: currentHumidity; }
+
+.currentWindImg {
+    grid-area: currentWindImg;
+    height: 4rem;
+}
+
+.currentWindDirectionImg {
+    grid-area: currentWindDirectionImg;
+    height: 4rem;
+}
+
+.UvIndexImg {
+    grid-area: UvIndexImg;
+    height: 4rem;
+}
+
+.humidityImg {
+    grid-area: humidityImg;
+    height: 4rem;
+}
+
+.humidityImg > img, .UvIndexImg > img, .currentWindDirectionImg > img, .currentWindImg > img {
+    height: 4rem;
+}
+
+.currentWindData { grid-area: currentWindData; }
+
+.currentWindDirectionData { grid-area: currentWindDirectionData; }
+
+.UvIndexData { grid-area: UvIndexData; }
+
+.humidityData { grid-area: humidityData; }
+
+
+
+
+
+
+
+
+  
