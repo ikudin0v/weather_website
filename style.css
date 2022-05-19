@@ -1,18 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 body {
     min-height: 100vh;
+    min-width: 100vw;
     margin: 0px;
-    /* background-color: #CAF0F8; */
     background: rgb(252,127,0);
     background: linear-gradient(148deg, rgba(252,127,0,1) 0%, rgba(0,119,182,1) 50%, rgba(202,240,248,1) 100%);
-
     background-repeat: no-repeat;
     color: white;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
 }
-
-
-
 .main {
     width: 100vw;
     /* height: fit-content; */
@@ -22,12 +19,6 @@ body {
     font-size: 1.5rem;
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    align-content: center;
-    justify-content: center;
-    justify-items: center; */
-    
-    
 }
 .logo {
     display: flex;
@@ -40,23 +31,25 @@ body {
 }
 .formContainer {
     width: -webkit-fill-available;
+    height: 100%;
     display: block;
+    margin: 0.5rem;
+    width: -moz-available;
 }
 .cityContainer {
     display: flex;
     position: relative;
-    background-color: #00000067;
-    /* border: 1px solid #0077B6; */
-    border-radius: 5px;
+    background-color: #ffffff1b;
+    border-radius: 10px;
     flex-direction: row;justify-content: space-between;
-    width: 50vw;
+    width: 60%;
     margin: auto;
 }
 .cityListContainer {
     width: 40%;
     max-height: 30vh;
     position: absolute;
-    background-color: #ffffff61;
+    background-color: #ffffff1b;
     /* border: 1px solid #0077B6; */
     border-radius: 5px;
     margin: -0.5vh;
@@ -68,7 +61,6 @@ body {
     width: 10px;
     background-color: #ffffff61;
     border-radius: 5px;
-    
 }
 .cityListContainer::-webkit-scrollbar-thumb {
     border-radius: 5px;
@@ -83,9 +75,10 @@ body {
     display: block;
     font-size: 1.5rem;
     width: calc(100% - 2vh - 0.6rem);
-    margin: 1vh 1vh 1vh 0 ;
+    /* margin: 1vh 1vh 1vh 0 ; */
     padding: 0.3rem;
-    background-color: #ffffff61;
+    margin: auto;
+    background-color: #ffffff1b;
     /* border: 1px solid #0077B6; */
     border-radius: 5px;
     outline: none;
@@ -100,15 +93,7 @@ body {
   margin: 5px;
 } 
 .cityList:hover {
-    background-color: #5a5a5a31;
-}
-
-.alkdfmv {
-    border: #03045E;
-    border: #0077B6;
-    border: #00B4D8;
-    border: #90E0EF;
-    border: #CAF0F8;
+    background-color: #ffffff1b;
 }
 .country {
     width: 2.5rem;
@@ -130,18 +115,15 @@ body {
     justify-content: center;
     text-align: center;
 }
-
 .currentWeather {
     height: fit-content;
     max-height: 75vh;
     width: 60%;
-    /* width: 50vw; */
     margin: 2vh auto 0 auto;
-    padding: 10px;
     background-color: #ffffff1b;
     border-radius: 10px;
 
-    display: grid;
+    display: none;
     grid-template-columns: repeat(2, 3fr) 3fr 1fr 2fr;
     grid-template-rows: 1fr 2fr repeat(6, 1fr);
     grid-auto-columns: 1fr;
@@ -157,77 +139,59 @@ body {
         "sunriseImg         sunsetImg           currentHumidity             humidityImg                 humidityData"
         "sunriseImg         sunsetImg           currentPreasure             preasureImg                 preasureData";
 }
-
-.currentCityName { grid-area: currentCityName; }
-
+.currentCityName {
+    grid-area: currentCityName;
+}
 .currentTemperature {
     grid-area: currentTemperature;
     font-size: 13rem;
 }
-
 .currentClouds {
     grid-area: currentClouds;
     height: 10rem;
 }
-
 .currentClouds > img {
     height: 15rem;
     align-self: baseline;
 }
-
 .currentCloudsDescription { grid-area: currentCloudsDescription; }
-
 .currentFeel { grid-area: currentFeel; }
-
 .sunriseData {
     grid-area: sunriseData;
     align-self: end;
 }
-
 .sunsetData {
     grid-area: sunsetData;
     align-self: end;
 }
-
 .sunriseImg {
     grid-area: sunriseImg;
     align-self: baseline;
 }
-
 .sunsetImg {
     grid-area: sunsetImg;
     align-self: baseline;
 }
-
 .sunriseImg > img, .sunsetImg > img {
     height: 10rem; 
 }
-
 .currentWindSpeed { grid-area: currentWindSpeed; }
-
 .currentWindDirection { grid-area: currentWindDirection; }
-
 .currentUvIndex { grid-area: currentUvIndex; }
-
 .currentHumidity { grid-area: currentHumidity; }
-
 .currentPreasure { grid-area: currentPreasure;}
-
 .currentWindImg {
     grid-area: currentWindImg;
     height: 4rem;
 }
-
 .currentWindDirectionImg {
     grid-area: currentWindDirectionImg;
     height: 4rem;
 }
-
 .UvIndexImg {
     grid-area: UvIndexImg;
     height: 4rem;
 }
-
 .humidityImg {
     grid-area: humidityImg;
     height: 4rem;
@@ -236,19 +200,13 @@ body {
     grid-area: preasureImg;
     height: 4rem;
 }
-
 .humidityImg > img, .UvIndexImg > img, .currentWindDirectionImg > img, .currentWindImg > img, .preasureImg > img {
     height: 4rem;
 }
-
 .currentWindData { grid-area: currentWindData; }
-
 .currentWindDirectionData { grid-area: currentWindDirectionData; }
-
 .UvIndexData { grid-area: UvIndexData; }
-
 .humidityData { grid-area: humidityData; }
-
 .preasureData { grid-area: preasureData; }
 
 /*...........................................DAILY...........................................*/
@@ -256,25 +214,42 @@ body {
 .dailyWeather {
     height: 55vh;
     width: 60%;
-    margin: 15vh auto 15vh auto;
-    padding: 10px;
+    margin: 5vh auto 15vh auto;
+    /* padding: 10px; */
     /* overflow: scroll; */
     /* overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap; */
-    display: flex;
+    display: none;
     flex-wrap: nowrap;
     overflow-x: auto;
     background-color: #ffffff1b;
     border-radius: 10px;
 }
-
+.dailyWeather::-webkit-scrollbar {
+    height: 10px;
+    background-color: transparent;
+    border-radius: 5px;
+}
+.dailyWeather::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ffffffaf;
+}
+.dailyWeather::-webkit-scrollbar-track {
+    border-radius: 5px;
+    /* border: 1px solid #0077B6; */
+    background-color: #ffffff1b;
+}
 .dailyCard {
     /* display: inline-block; */
     width: 250px;
-    height: 100%;
+    height: calc(100% - 14px);
     /* border: 1px solid red; */
     flex: 0 0 auto;
+    margin: 7px;
+    background-color: #ffffff1b;
+    border-radius: 8px;
+
 
 
 
@@ -291,12 +266,6 @@ body {
       "dailyWindImg             dailyWindImg            dailyHumidityImg            dailyHumidityImg            dailyPressureImg            dailyPressureImg"
       "dailyWindDesctiption     dailyWindDesctiption    dailyHumidityDescription    dailyHumidityDescription    dailyPressureDecription     dailyPressureDecription";
 }
-
-
-
-
-
-
 .dailyCard > div {
     display: flex;
     /* border: 1px solid red; */
@@ -304,46 +273,32 @@ body {
     justify-content: center;
     text-align: center;
 }
-  
 .dailyWindImg { grid-area: dailyWindImg; }
-
 .dailyHumidityImg { grid-area: dailyHumidityImg; }
-
 .dailyPressureImg { grid-area: dailyPressureImg; }
-
 .dailyPressureImg > img, .dailyHumidityImg > img, .dailyWindImg > img {
     width: 100%;
 }
-
 .dailyPressureDecription { grid-area: dailyPressureDecription; }
-
 .dailyHumidityDescription { grid-area: dailyHumidityDescription; }
-
 .dailyWindDesctiption { grid-area: dailyWindDesctiption; }
-
 .dailyPressureDecription, .dailyHumidityDescription, .dailyWindDesctiption {
     height: 2rem;
 }
-
 .nightTemp { grid-area: nightTemp; }
-
 .dayTemp { grid-area: dayTemp; }
-
 .dayTemp, .nightTemp {
     font-size: 3rem;
     height: 3rem;
 }
-
 .dailyImg {
     grid-area: dailyImg;
     height: 200px;
 }
-
 .dailyImg > img {
     width: 100%;
 }
-
 .dailyDate {
     grid-area: dailyDate;
-    font-size: 3rem;
+    font-size: 2rem;
 }
